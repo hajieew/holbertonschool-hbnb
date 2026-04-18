@@ -34,7 +34,6 @@ When a user sends a request (for example, creating a user or viewing places), it
 This is the core of the application. It defines how the system works and what rules are applied.
 
 It includes:
-
 User
 Place
 Review
