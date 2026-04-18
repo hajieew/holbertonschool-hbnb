@@ -11,6 +11,7 @@ class PresentationLayer {
 class Facade {
     +create_user()
     +get_places()
+    +add_amenity()
     +add_review()
 }
 
