@@ -238,6 +238,8 @@ API-->>User: 201 Created
 # Review Submission Flow
 
 ```mermaid
+sequenceDiagram
+
 participant User
 participant API
 participant BusinessLogic
