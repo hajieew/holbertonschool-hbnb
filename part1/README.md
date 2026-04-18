@@ -216,10 +216,11 @@ Each diagram illustrates how the Presentation, Business Logic, and Persistence l
 
 The goal is to clearly show the request flow, from the user request to data processing and response return.
 
-# User Registration
+# User Registration flow
 
 ```mermaid
 sequenceDiagram
+
 participant User
 participant API
 participant BusinessLogic
@@ -231,6 +232,16 @@ BusinessLogic->>Database: save user
 Database-->>BusinessLogic: confirmation
 BusinessLogic-->>API: success
 API-->>User: 201 Created
+
+```
+
+# Review Submission Flow
+
+```mermaid
+participant User
+participant API
+participant BusinessLogic
+participant Database
 
 User->>API: Send Review (Rating, Comment)
 API->>BusinessLogic: Check IDs
