@@ -207,3 +207,36 @@ Place "1" --> "0..*" Review : has
 Place "0..*" -- "0..*" Amenity : includes
 
 ```
+
+# TASK 2 - API Calls
+Overview
+
+This document presents two main API flows in the HBnB application using sequence diagrams.
+Each diagram illustrates how the Presentation, Business Logic, and Persistence layers interact with each other through the Facade pattern.
+
+The goal is to clearly show the request flow, from the user request to data processing and response return.
+
+# User Registration
+
+```mermaid
+sequenceDiagram
+participant User
+participant API
+participant BusinessLogic
+participant Database
+
+User->>API: POST /users (register)
+API->>BusinessLogic: validate & create user
+BusinessLogic->>Database: save user
+Database-->>BusinessLogic: confirmation
+BusinessLogic-->>API: success
+API-->>User: 201 Created
+
+User->>API: Send Review (Rating, Comment)
+API->>BusinessLogic: Check IDs
+BusinessLogic->>Database: Save Review
+Database-->>BusinessLogic: Success
+BusinessLogic-->>API: Review Added
+API-->>User: Thank you for your review!
+
+```
