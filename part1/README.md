@@ -147,61 +147,63 @@ Amenity
 These entities represent the core functionality of the system and define the main business rules.
 
 ## Class Diagram
-
 ```mermaid
 classDiagram
-    class BaseModel {
-        +UUID4 id
-        +DateTime created_at
-        +DateTime updated_at
-        +save()
-        +update(data)
-    }
 
-    class User {
-        +String first_name
-        +String last_name
-        +String email
-        +String password
-        +Boolean is_admin
-        +register()
-        +update_profile()
-    }
+class BaseModel {
+    +UUID4 id
+    +DateTime created_at
+    +DateTime updated_at
+    +save()
+    +update(data)
+}
 
-    class Place {
-        +String title
-        +String description
-        +Float price
-        +Float latitude
-        +Float longitude
-        +UUID4 owner_id
-        +create()
-        +update()
-    }
+class User {
+    +String first_name
+    +String last_name
+    +String email
+    +String password
+    +Boolean is_admin
+    +register()
+    +update_profile()
+}
 
-    class Review {
-        +Int rating
-        +String comment
-        +UUID4 place_id
-        +UUID4 user_id
-        +post()
-    }
+class Place {
+    +String title
+    +String description
+    +Float price
+    +Float latitude
+    +Float longitude
+    +UUID4 owner_id
+    +create()
+    +update()
+}
 
-    class Amenity {
-        +String name
-        +String description
-        +create()
-    }
+class Review {
+    +Int rating
+    +String comment
+    +UUID4 place_id
+    +UUID4 user_id
+    +post()
+}
 
-    %% Relationships
-    User --|> BaseModel : Inherits
-    Place --|> BaseModel : Inherits
-    Review --|> BaseModel : Inherits
-    Amenity --|> BaseModel : Inherits
+class Amenity {
+    +String name
+    +String description
+    +create()
+}
 
-    User "1" --> "0..*" Place : Owns
-    Place "1" --> "0..*" Review : Has
-    User "1" --> "0..*" Review : Writes
-    Place "0..*" -- "0..*" Amenity : Includes
+%% Inheritance (clean top-down flow)
+BaseModel <|-- User
+BaseModel <|-- Place
+BaseModel <|-- Review
+BaseModel <|-- Amenity
+
+%% Relationships (grouped logically)
+User "1" --> "0..*" Place : owns
+User "1" --> "0..*" Review : writes
+
+Place "1" --> "0..*" Review : has
+Place "0..*" -- "0..*" Amenity : includes
 
 ```
