@@ -235,6 +235,27 @@ API-->>User: 201 Created
 
 ```
 
+# Place Creation
+
+```mermaid
+sequenceDiagram
+
+participant User
+participant API
+participant Facade
+participant BusinessLogic
+participant Database
+
+User->>API: POST /places
+API->>Facade: createPlace(data)
+Facade->>BusinessLogic: validate place
+BusinessLogic->>Database: save place
+Database-->>BusinessLogic: OK
+BusinessLogic-->>Facade: place created
+Facade-->>API: success
+API-->>User: 201 Created
+```
+
 # Review Submission Flow
 
 ```mermaid
@@ -251,5 +272,26 @@ BusinessLogic->>Database: Save Review
 Database-->>BusinessLogic: Success
 BusinessLogic-->>API: Review Added
 API-->>User: Thank you for your review!
+
+```
+
+# Fetching a List of Places
+```mermaid 
+sequenceDiagram
+
+participant User
+participant API
+participant Facade
+participant BusinessLogic
+participant Database
+
+User->>API: GET /places
+API->>Facade: getPlaces(filters)
+Facade->>BusinessLogic: fetch data
+BusinessLogic->>Database: query places
+Database-->>BusinessLogic: results
+BusinessLogic-->>Facade: places list
+Facade-->>API: response
+API-->>User: 200 OK + data
 
 ```
