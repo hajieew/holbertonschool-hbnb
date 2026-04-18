@@ -150,6 +150,8 @@ Amenity
 
 These entities represent the core functionality of the system and define the main business rules.
 
+## Class Diagram
+
 ```mermaid
 classDiagram
     class BaseModel {
