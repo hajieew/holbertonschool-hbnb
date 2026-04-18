@@ -1,3 +1,8 @@
+# Holberton School HBnB – Documentation
+
+# TASK 0 - High-Level Package Diagram
+
+
 Overview
 
 This document presents a high-level package diagram of the HBnB application. The diagram illustrates a three-layer architecture and shows how these layers communicate using the Facade design pattern.
@@ -95,10 +100,10 @@ class PresentationLayer {
 }
 
 class Facade {
-    +createUser()
-    +getPlaces()
-    +addReview()
-    +addAmenity()
+    +create_User()
+    +get_Places()
+    +add_Review()
+    +add_Amenity()
 }
 
 class BusinessLogicLayer {
@@ -109,10 +114,10 @@ class BusinessLogicLayer {
 }
 
 class PersistenceLayer {
-    +UserRepository
-    +PlaceRepository
-    +ReviewRepository
-    +AmenityRepository
+    +User-Repository
+    +Place-Repository
+    +Review-Repository
+    +Amenity-Repository
 }
 
 PresentationLayer --> Facade : Uses
