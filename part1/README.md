@@ -123,3 +123,85 @@ class PersistenceLayer {
 PresentationLayer --> Facade : Uses
 Facade --> BusinessLogicLayer : Handles business logic
 BusinessLogicLayer --> PersistenceLayer : Database operations
+
+
+
+
+
+# TASK 1 - Business Logic Layer
+
+
+Overview
+
+This document describes the Business Logic layer of the HBnB application. It presents a UML class diagram that models the core entities of the system, their attributes, methods, and relationships.
+
+The main goal is to clearly represent how the business logic is structured and how the main entities interact with each other.
+
+
+
+# Business Logic Layer
+
+The Business Logic layer contains the main entities of the application:
+
+User
+Place
+Review
+Amenity
+
+These entities represent the core functionality of the system and define the main business rules.
+
+```mermaid
+classDiagram
+    class BaseModel {
+        +UUID4 id
+        +DateTime created_at
+        +DateTime updated_at
+        +save()
+        +update(data)
+    }
+
+    class User {
+        +String first_name
+        +String last_name
+        +String email
+        +String password
+        +Boolean is_admin
+        +register()
+        +update_profile()
+    }
+
+    class Place {
+        +String title
+        +String description
+        +Float price
+        +Float latitude
+        +Float longitude
+        +UUID4 owner_id
+        +create()
+        +update()
+    }
+
+    class Review {
+        +Int rating
+        +String comment
+        +UUID4 place_id
+        +UUID4 user_id
+        +post()
+    }
+
+    class Amenity {
+        +String name
+        +String description
+        +create()
+    }
+
+    %% Relationships
+    User --|> BaseModel : Inherits
+    Place --|> BaseModel : Inherits
+    Review --|> BaseModel : Inherits
+    Amenity --|> BaseModel : Inherits
+
+    User "1" --> "0..*" Place : Owns
+    Place "1" --> "0..*" Review : Has
+    User "1" --> "0..*" Review : Writes
+    Place "0..*" -- "0..*" Amenity : Includes
