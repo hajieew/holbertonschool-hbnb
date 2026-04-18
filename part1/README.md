@@ -82,3 +82,39 @@ The request goes to the Facade
 The Facade calls the Business Logic Layer
 The Business Logic Layer interacts with the Persistence Layer
 The result is returned back to the user through the same path
+
+
+
+# Package Diagram
+```mermaid
+classDiagram
+
+class PresentationLayer {
+    +API Endpoints
+    +Services
+}
+
+class Facade {
+    +createUser()
+    +getPlaces()
+    +addReview()
+    +addAmenity()
+}
+
+class BusinessLogicLayer {
+    +User
+    +Place
+    +Review
+    +Amenity
+}
+
+class PersistenceLayer {
+    +UserRepository
+    +PlaceRepository
+    +ReviewRepository
+    +AmenityRepository
+}
+
+PresentationLayer --> Facade : Uses
+Facade --> BusinessLogicLayer : Handles business logic
+BusinessLogicLayer --> PersistenceLayer : Database operations
