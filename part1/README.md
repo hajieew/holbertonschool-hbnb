@@ -91,6 +91,7 @@ The result is returned back to the user through the same path
 
 
 # Package Diagram
+
 ```mermaid
 classDiagram
 
@@ -128,7 +129,7 @@ BusinessLogicLayer --> PersistenceLayer : Database operations
 
 
 
-# TASK 1 - Business Logic Layer
+# TASK 1 -Business Logic Layer
 
 
 Overview
