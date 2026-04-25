@@ -1,7 +1,10 @@
-import uuid
+from app.models.base_model import BaseModel
 
-class User:
-    def __init__(self, name, email):
-        self.id = str(uuid.uuid4())
-        self.name = name
+class User(BaseModel):
+    def __init__(self, first_name, last_name, email):
+        super().__init__()
+        self.first_name = first_name
+        self.last_name = last_name
         self.email = email
+
+        self.places = []
