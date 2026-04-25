@@ -1,12 +1,13 @@
-class Place:
-    def __init__(self, title, description):
-        self.id = None
+from models.base import BaseModel
+
+class Place(BaseModel):
+    def __init__(self, title, description, owner):
+        super().__init__()
         self.title = title
         self.description = description
+        self.owner = owner
+        self.reviews = []
+        self.amenities = []
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "description": self.description
-        }
+        return self.__dict__
