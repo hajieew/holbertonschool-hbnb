@@ -9,3 +9,5 @@ class HBnBFacade:
         user = User(**data)
         self.repo.save("users", user)
         return user.to_dict()
+    
+    
