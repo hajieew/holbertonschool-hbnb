@@ -1,5 +1,5 @@
-import uuid
 from datetime import datetime
+import uuid
 
 class BaseModel:
     def __init__(self):
@@ -9,3 +9,6 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.utcnow()
+
+    def to_dict(self):
+        return self.__dict__
